@@ -101,7 +101,7 @@ class AbrirNegocio(object):
             raise x
 
     def Grabar(self, seconds):
-        p = pyaudio.PyAudio()  # Create an interface to PortAudio
+        p = pyaudio.PyAudio()  # Crea una interfaz a PortAudio
 
         chunk = 1024  # Graba en 24 trozos de 1024 samples
         sample_format = pyaudio.paInt16  # 16 bits por sample

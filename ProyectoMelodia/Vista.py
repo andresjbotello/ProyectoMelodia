@@ -54,7 +54,7 @@ def AbreAbrirAudio():
     tree.column('Autor', width=125, stretch=NO)
 
     tree.heading('Nombre', text="Nombre", anchor=W)
-    tree.heading('Descripcion', text="Descripcion", anchor=W)
+    tree.heading('Descripcion', text="Descripción", anchor=W)
     tree.heading('Autor', text="Autor", anchor=W)
     tree.pack()
 
@@ -89,7 +89,7 @@ def AbreEditar(txtNombre, txtDesc, txtAutor, tree):
     txtNombreE.configure(state='readonly')
     txtNombreE.place(x=5, y=30)
 
-    lblDescripcion = Label(winEdit, text="Descripcion:").place(x=5, y=55)
+    lblDescripcion = Label(winEdit, text="Descripción:").place(x=5, y=55)
     txtDescripcionE = Entry(winEdit, width=95)
     txtDescripcionE.insert(0, txtDesc)
     txtDescripcionE.place(x=5, y=80)
@@ -118,13 +118,13 @@ def AbreGrabar():
     C.pack()
 
     recordImage = PhotoImage(file=".\\Recursos\\Iconos\\Grabar.png")
-    lblGraba = Label(winGrab, image=recordImage, bg="snow", borderwidth=2, relief="groove")
+    lblGraba = Label(winGrab, image=recordImage,bg="snow", borderwidth=2, relief="groove")
     lblGraba.place(x=5, y=5, relwidth=0.5, relheight=0.7)
     muteImage = PhotoImage(file=".\\Recursos\\Iconos\\NoMicro.png")
-    lblMute = Label(winGrab, image=muteImage, bg="snow", borderwidth=2, relief="groove")
+    lblMute = Label(winGrab, image=muteImage,bg="snow", borderwidth=2, relief="groove")
     lblMute.place(x=5, y=5, relwidth=0.5, relheight=0.7)
 
-    lblTiempo = Label(winGrab, text="Ingrese el tiempo de grabacion(seg)", bg="snow").place(x=110, y=150)
+    lblTiempo = Label(winGrab, text="Ingrese el tiempo de grabación(seg)", borderwidth=2, relief="groove",bg="snow").place(x=110, y=150)
     txtTiempo = Entry(winGrab, width=15)
     txtTiempo.place(x=210, y=170)
 
@@ -135,15 +135,15 @@ def AbreGrabar():
     btnRep = Button(winGrab, image=btnRepImg, state=DISABLED, command=lambda: PlayGrabar())
     btnRep.place(x=50,y=150)
 
-    lblNombre = Label(winGrab, text="Nombre:", bg="snow").place(y=5, x=320)
+    lblNombre = Label(winGrab, text="Nombre:", bg="snow",borderwidth=2, relief="groove").place(y=5, x=320)
     txtNombre = Entry(winGrab, width=45, state=DISABLED)
     txtNombre.place(x=320, y=30)
 
-    lblDesc = Label(winGrab, text="Descripcion:", bg="snow").place(y=55, x=320)
+    lblDesc = Label(winGrab, text="Descripción:", bg="snow",borderwidth=2, relief="groove").place(y=55, x=320)
     txtDesc = Entry(winGrab, width=45, state=DISABLED)
     txtDesc.place(x=320, y=79)
 
-    lblAutor = Label(winGrab, text="Autor:", bg="snow").place(y=104, x=320)
+    lblAutor = Label(winGrab, text="Autor:", bg="snow",borderwidth=2, relief="groove").place(y=104, x=320)
     txtAutor = Entry(winGrab, width=45, state=DISABLED)
     txtAutor.place(x=320, y=128)
 
@@ -155,7 +155,7 @@ def AbreGrabar():
 
 def AbreAnalisis(nombre):
     winAnalisis = Tk()
-    winAnalisis.title("Analisis de Audios")
+    winAnalisis.title("Análisis de Audios")
     winAnalisis.resizable(width=False, height=False)
 
     C = Canvas(winAnalisis, bg="blue", height=550, width=1010)
@@ -166,15 +166,16 @@ def AbreAnalisis(nombre):
 
     GeneraAnalisis(nombre)
 
-    lblChromaTexto = Label(winAnalisis, text="Chromagrama del Audio: ", bg="snow").place(x=5,y=5)
+    lblChromaTexto = Label(winAnalisis, text="Análisis del Audio: {0}.".format(nombre), borderwidth=2, relief="groove", bg="snow").place(x=5,y=5)
     imgChroma = PhotoImage(file=".\\CapaDatos\\Graphics\\{0}_Chroma.png".format(nombre))
     lblChroma = Label(winAnalisis, image=imgChroma, borderwidth=2, relief="groove").place(y=30, x=5)
 
-    lblAudioOriginal = Label(winAnalisis, text="Audio de la Grabación Original: ", bg="snow").place(y=460, x=5)
+
+    lblAudioOriginal = Label(winAnalisis, text="Audio de la Grabación Original: ", borderwidth=2, relief="groove", bg="snow").place(y=460, x=5)
     imgAudio = PhotoImage(file=".\\Recursos\\Iconos\\Play.png")
     btnAudioOriginal = Button(winAnalisis, text="Reproducir" , image = imgAudio, compound="left", command=lambda: AbrirAudioOrig(nombre)).place(y=490, x=5)
 
-    lblAudioMel = Label(winAnalisis, text="Audio de la Melodía Generada: ", bg="snow").place(y=460, x=440)
+    lblAudioMel = Label(winAnalisis, text="Audio de la Melodía Generada: ", borderwidth=2, relief="groove",bg="snow").place(y=460, x=440)
     btnAudioMel = Button(winAnalisis, text="Reproducir", image = imgAudio, compound="left", command=lambda: AbrirAudioMel(nombre)).place(y=490,x=440)
 
     btnVolver = Button(winAnalisis, text="Volver", width=15, height=2, bg="SteelBlue1", command=lambda: Volver(winAnalisis)).place(y=490, x=892)
@@ -245,7 +246,7 @@ def BtnGuardarAudio(txtNom, txtAu, txtDesc, btnGuardar, btnPlay, txtTie, win):
         txtNom.configure(state=DISABLED)
         txtDesc.configure(state=DISABLED)
         txtAu.configure(state=DISABLED)
-        if msb.askyesno("Analisis", "Desea abrir el analisis del audio grabado recientemente?"):
+        if msb.askyesno("Analisis", "Desea abrir el análisis del audio grabado recientemente?"):
             win.destroy()
             AbreAnalisis(nombre)
     except Exception as x:
@@ -259,7 +260,7 @@ def IniciaGrabacion(lbl, img, img1, txtTie, btn, txtNom, txtAu, txtDesc, btnGuar
         lbl.configure(image=img)
         win.update()
         negocio.Grabar(seconds)
-        msb.showinfo("Exito!","Grabacion realizada correctamente.")
+        msb.showinfo("Exito!","Grabación realizada correctamente.")
         lbl.configure(image=img1)
         win.update()
         btn.configure(state=NORMAL)
@@ -282,7 +283,7 @@ def BtnAbreAnalisis(tree, win):
     try:
         itemActual = tree.focus()
         if len(itemActual) == 0:
-            raise Exception("Debe seleccionar un audio abrir su analisis")
+            raise Exception("Debe seleccionar un audio abrir su análisis")
         nombre = tree.item(itemActual)['values'][0]
         win.destroy()
         AbreAnalisis(nombre)
@@ -343,7 +344,7 @@ def Play(tree):
 def BtnGuardarEditar(winEdit,txtNombre, txtAutor, txtDescripcion, tree):
     try:
         negocio.Modifica(txtNombre.get(), txtAutor.get(), txtDescripcion.get())
-        msb.showinfo("Edicion Exitosa!", "El audio {0} se ha editado exitosamente".format(txtNombre.get()))
+        msb.showinfo("Edición Exitosa!", "El audio {0} se ha editado exitosamente".format(txtNombre.get()))
         winEdit.destroy()
         AbreAbrirAudio()
     except Exception as x:

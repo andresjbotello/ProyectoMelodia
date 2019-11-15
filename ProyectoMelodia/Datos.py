@@ -35,7 +35,7 @@ class DatosSongs(object):
             songs = self.Get_All_Audios()
             for s in songs:
                 if nombre == s[0]:
-                    raise Exception("El nombre del audio esta duplicado. Por favor seleccione uno nuevo.")
+                    raise Exception("El nombre del audio está duplicado. Por favor seleccione uno nuevo.")
         except:
             pass
         song.nombre = nombre
@@ -49,7 +49,7 @@ class DatosSongs(object):
             raise Exception("Error al guardar el audio")
 
     def Guarda_Analisis(self,path, chroma, nombre):
-        """Guarda analisis de audio en la base de datos"""
+        """Guarda análisis de audio en la base de datos"""
 
         song = self.Get_One_Audio(nombre)
         if song != None:
@@ -58,7 +58,7 @@ class DatosSongs(object):
             try:
                 self.session.commit()
             except:
-                raise Exception("Error al guardar los archivos de analisis")
+                raise Exception("Error al guardar los archivos de análisis")
         else:
             raise Exception("El nombre del archivo no se encuentra")
 
